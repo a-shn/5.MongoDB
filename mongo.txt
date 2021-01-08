@@ -1,0 +1,22 @@
+// создание базы данных
+use bachelor_db
+// добавление сущностей, внесение данных
+db.bachelor.insert([
+    {name: "Max", surname: "Planck", college: "Ludwig Maximilian University of Munich"},
+    {name: "Max", surname: "Petrov", college: "Kazan Federal University"}
+])
+
+db.bachelor.insertOne({name: "Max", surname: "Planck", college: "Ludwig Maximilian University of Munich"})
+
+// вывод всех экземпляров коллекции
+db.bachelor.find()
+
+// вывод бакалавра с id
+db.bachelor.find({_id: ObjectId("5ff72414ef0de35856b8b6a8")})
+
+// вывод бакалавров для условий с оператором ИЛИ
+db.bachelor.find({ $or: [{name: "Max"}, {surname: "Planck"}]})
+
+// обновить поле у сущности
+db.bachelor.updateOne({name: "Max"}, {$push: {college: "University of Kiel"}})
+
